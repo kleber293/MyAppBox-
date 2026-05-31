@@ -1,6 +1,6 @@
 # MyAppBox — Seu portal de acesso rápido
 
-![Preview do MyAppBox](image%20(2).png)
+![Preview do MyAppBox](Image/image.png)
 
 O **MyAppBox** é um dashboard elegante e minimalista projetado para organizar seus aplicativos e serviços favoritos em um só lugar. Com um visual cósmico e interações fluidas, ele oferece uma experiência de navegação moderna e intuitiva.
 
