@@ -30,7 +30,7 @@ Na barra **“busca por app”**, além de filtrar os cards, ao pressionar **Ent
 - Rastro do mouse suave com fade (pontos interpolados)
 
 ## Estrutura do projeto
----
+
 - `index.html` — estrutura da página e cards
 - `style.css` — estilos gerais, cards, botões, animações
 - `script.js` — cosmos canvas, trail do mouse, busca, filtros e efeitos
