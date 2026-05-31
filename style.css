@@ -1,0 +1,336 @@
+/* ==== RESET & BASE ==== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0a0e1a;
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-hover-border: rgba(120, 160, 255, 0.4);
+  --text-primary: #e8eaf6;
+  --text-secondary: #7986cb;
+  --accent: #7c83ff;
+  --accent2: #a78bfa;
+  --glow: rgba(124, 131, 255, 0.15);
+  --radius: 16px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* ==== FUNDO CÓSMICO (canvas) ==== */
+#cosmosCanvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
+
+/* ==== CONTAINER ==== */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+}
+
+/* ==== HEADER ==== */
+header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, #a5b4fc, #7c83ff, #c4b5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+  animation: fadeDown 0.7s ease both;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 32px;
+  animation: fadeDown 0.7s 0.1s ease both;
+}
+
+/* ==== SEARCH ==== */
+.search-wrapper {
+  position: relative;
+  max-width: 520px;
+  margin: 0 auto 28px;
+  animation: fadeDown 0.7s 0.2s ease both;
+}
+
+.search-wrapper input {
+  width: 100%;
+  padding: 14px 48px 14px 44px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--card-border);
+  border-radius: 50px;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: var(--transition);
+  backdrop-filter: blur(10px);
+  cursor: text;
+}
+
+.search-wrapper input:focus {
+  border-color: var(--accent);
+  background: rgba(124, 131, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(124, 131, 255, 0.15);
+}
+
+.search-wrapper input::placeholder { color: rgba(255,255,255,0.25); }
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+.search-clear {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 0.85rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.search-clear.visible { opacity: 1; }
+.search-clear:hover { color: var(--text-primary); }
+
+/* ==== FILTROS ==== */
+.filters {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeDown 0.7s 0.3s ease both;
+}
+
+.filter-btn {
+  padding: 7px 18px;
+  border-radius: 50px;
+  border: 1px solid var(--card-border);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  transition: var(--transition);
+  letter-spacing: 0.3px;
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(124, 131, 255, 0.08);
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 16px rgba(124, 131, 255, 0.4);
+}
+
+/* ==== GRID ==== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+/* ==== CARD ==== */
+.card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: var(--text-primary);
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  transition: var(--transition);
+  animation: fadeUp 0.5s ease both;
+  transform-style: preserve-3d;
+  will-change: transform;
+  cursor: pointer;
+}
+
+.card:hover {
+  border-color: var(--card-hover-border);
+  background: rgba(124, 131, 255, 0.08);
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.3),
+    0 0 0 1px rgba(124, 131, 255, 0.2),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* Glow interno no hover */
+.card-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(124,131,255,0.18), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.card:hover .card-glow { opacity: 1; }
+
+.card img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 8px;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+
+.card:hover img { transform: scale(1.12) rotate(-3deg); }
+
+.card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-name {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-primary);
+}
+
+.card-desc {
+  display: block;
+  font-size: 0.73rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+.card-arrow {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  opacity: 0;
+  transform: translate(-4px, 4px);
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.card:hover .card-arrow {
+  opacity: 1;
+  transform: translate(0, 0);
+  color: var(--accent);
+}
+
+/* Ripple */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(124, 131, 255, 0.25);
+  transform: scale(0);
+  animation: rippleAnim 0.55s linear;
+  pointer-events: none;
+}
+
+@keyframes rippleAnim {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* Card oculto (filtro/busca) */
+.card.hidden {
+  display: none;
+}
+
+/* ==== NO RESULTS ==== */
+.no-results {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 64px 0;
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.no-results i { font-size: 2.5rem; opacity: 0.4; }
+.no-results.visible { display: flex; }
+
+/* ==== FOOTER ==== */
+footer {
+  text-align: center;
+  margin-top: 64px;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+}
+
+footer strong { color: var(--accent); }
+
+/* ==== ANIMAÇÕES DE ENTRADA ==== */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ==== SCROLLBAR ==== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(124,131,255,0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(124,131,255,0.5); }
+
+/* ==== RESPONSIVO ==== */
+@media (max-width: 600px) {
+  .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .container { padding: 32px 16px 48px; }
+}

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MyAppBox — Sua caixa de apps</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- Fundo cósmico interativo -->
+  <canvas id="cosmosCanvas"></canvas>
+
+  <div class="container">
+    <header>
+      <h1 class="title">✦ MyAppBox</h1>
+      <p class="subtitle">Acesso rápido aos seus apps favoritos</p>
+
+      <!-- Barra de busca -->
+      <div class="search-wrapper">
+        <i class="fa fa-search search-icon"></i>
+        <input type="text" id="searchInput" placeholder="Buscar apps..." autocomplete="off"/>
+        <span class="search-clear" id="clearBtn"><i class="fa fa-times"></i></span>
+      </div>
+
+      <!-- Filtros por categoria -->
+      <div class="filters" id="filters">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="google">Google</button>
+        <button class="filter-btn" data-filter="social">Social</button>
+        <button class="filter-btn" data-filter="dev">Dev</button>
+        <button class="filter-btn" data-filter="ia">IA</button>
+        <button class="filter-btn" data-filter="outros">Outros</button>
+      </div>
+    </header>
+
+    <!-- Grid de cards -->
+    <main class="grid" id="appGrid">
+
+      <!-- GOOGLE -->
+      <a href="https://mail.google.com" target="_blank" class="card" data-category="google" data-name="gmail">
+        <div class="card-glow"></div>
+        <img src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico" alt="Gmail"/>
+        <div class="card-info">
+          <span class="card-name">Gmail</span>
+          <span class="card-desc">Email do Google</span>
+        </div>
+        <div class="card-arrow"><i class="fa fa-arrow-up-right-from-square"></i></div>
+      </a>
+
+      <a href="https://drive.google.com" target="_blank" class="card" data-category="google" data-name="google drive">
+        <div class="card-glow"></div>
+        <img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png" alt="Drive"/>
+        <div class="card-info">
+          <span class="card-name">Google Drive</span>
+          <span class="card-desc">Arquivos na nuvem</span>
+        </div>
+        <div class="card-arrow"><i class="fa fa-arrow-up-right-from-square"></i></div>
+      </a>
+
+      <a href="https://docs.google.com" target="_blank" class="card" data-category="google" data-name="google docs">
+        <div class="card-glow"></div>
+        <img src="https://ssl.gstatic.com/docs/documents/images/kix-favicon7.ico" alt="Docs"/>
+        <div class="card-info">
+          <span class="card-name">Google Docs</span>
+          <span class="card-desc">Editor de textos online</span>
+        </div>
+        <div class="card-arrow"><i class="fa fa-arrow-up-right-from-square"></i></div>
+      </a>
+
+      <a href="https://sheets.google.com" target="_blank" class="card" data-category="google" data-name="google sheets">
+        <div class="card-glow"></div>
+        <img src="https://ssl.gstatic.com/docs/spreadsheets/favicon3.ico" alt="Sheets"/>
+        <div class="card-info">
+          <span class="card-name">Google Sheets</span>
+          <span class="card-desc">Planilhas na web</span>
+        </div>
+        <div class="card-arrow"><i class="fa fa-arrow-up-right-from-square"></i></div>
+      </a>
+
+      <a href="https://forms.google.com" target="_blank" class="card" data-category="google" data-name="google forms">
+        <div class="card-glow"></div>
+        <img src="https://ssl.gstatic.com/docs/forms/device_home/android_192.png" alt="Forms"/>
+        <div class="card-info">
+          <span class="card-name">Google Forms</span>
+          <span class="card-desc">Formulários e pesquisas</span>
+        </div>
+        <div class="card-arrow"><i class="fa fa-arrow-up-right-from-square"></i></div>
+      </a>
+
+      <a href="https://slides.google.com" target="_blank" class="card" data-category="google" data-name="google slides">
+        <div class="card-glow"></div>
+        <img src="https://ssl.gstatic.com/docs/presentations/images/favicon5.ico" alt="Slides"/>
+        <div class="card-info">
+          <span class="card-name">Google Slides</span>
+          <span class="card-desc">Apresentações</span>
+        </div>
+        <div class="card-arrow"><i class="fa fa-arrow-up-right-from-square"></i></div>
+      </a>
+
+      <a href="https://classroom.google.com" target="_blank" class="card" data-category="google" data-name="google classroom">
+        <div class="card-glow"></div>
+        <img src="https://ssl.gstatic.com/classroom/favicon.png" alt="Classroom"/>
+        <div class="card-info">
+          <span class="card-name">Google Classroom</span>
+          <span class="card-desc">Turmas e salas</span>
+        </div>
+        <div class="card-arrow"><i class="fa fa-arrow-up-right-from-square"></i></div>
+      </a>
+
+      <a href="https://sites.google.com" target="_blank" class="card" data-category="google" data-name="google sites">
+        <div class="card-glow"></div>
+        <img src="https://ssl.gstatic.com/sites/p/3168b8/system/app/images/favicon.ico" alt="Sites"/>
+        <div class="card-info">
+          <span class="card-name">Google Sites</span>
+          <span class="card-desc">Criação de sites</span>
+        </div>
+        <div class="card-arrow"><i class="fa fa-arrow-up-right-from-square"></i></div>
+      </a>
+
+      <a href="https://calendar.google.com" target="_blank" class="card" data-category="google" data-name="google calendar">
+        <div class="card-glow"></div>
+        <img src="https://calendar.google.com/googlecalendar/images/favicon_v2018_256.png" alt="Calendar"/>
+        <div class="card-info">
+          <span class="card-name">Google Calendar</span>
+          <span class="card-desc">Agenda e eventos</span>
+        </div>
+        <div class="card-arrow"><i class="fa fa-arrow-up-right-from-square"></i></div>
+      </a>
+
+      <a href="https://meet.google.com" target="_blank" class="card" data-category="google" data-name="google meet">
+        <div class="card-glow"></div>
+        <img src="https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v1/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png" alt="Meet"/>
+        <div class="card-info">
+          <span class="card-name">Google Meet</span>
+          <span class="card-desc">Reuniões por vídeo</span>
+        </div>
+        <div class="card-arrow"><i class="fa fa-arrow-up-right-from-square"></i></div>
+      </a>
+
+      <a href="https://translate.google.com" target="_blank" class="card" data-category="google" data-name="google translate">
+        <div class="card-glow"></div>
+        <img src="https://ssl.gstatic.com/translate/favicon.ico" alt="Translate"/>
+        <div class="card-info">
+          <span class="card-name">Google Translate</span>
+          <span class="card-desc">Tradução</span>
+        </div>
+        <div class="card-arrow"><i class="fa fa-arrow-up-right-from-square"></i></div>
+      </a>
+
+      <a href="https://photos.google.com" target="_blank" class="card" data-category="google" data-name="google photos">
+        <div class="card-glow"></div>
+        <img src="https://ssl.gstatic.com/photos/silhouette/favicon.ico" alt="Photos"/>
+        <div class="card-info">
+          <span class="card-name">Google Photos</span>
+          <span class="card-desc">Fotos e álbuns</span>
+        </div>
+        <div class="card-arrow"><i class="fa fa-arrow-up-right-from-square"></i></div>
+      </a>
+
+      <a href="https://tasks.google.com" target="_blank" class="card" data-category="google" data-name="google tasks">
+        <div class="card-glow"></div>
+        <img src="https://ssl.gstatic.com/tasks/favicon.ico" alt="Tasks"/>
+        <div class="card-info">
+          <span class="card-name">Google Tasks</span>
+          <span class="card-desc">Tarefas integradas</span>
+        </div>
+        <div class="card-arrow"><i class="fa fa-arrow-up-right-from-square"></i></div>
+      </a>
+
+      <a href="https://earth.google.com" target="_blank" class="card" data-category="google" data-name="google earth">
+        <div class="card-glow"></div>
+        <img src="https://earth.google.com/favicon.ico" alt="Earth"/>
+        <div class="card-info">
+          <span class="card-name">Google Earth</span>
+          <span class="card-desc">Mapas 3D</span>
+        </div>
+        <div class="card-arrow"><i class="fa fa-arrow-up-right-from-square"></i></div>
+      </a>
+
+      <a href="https://maps.google.com" target="_blank" class="card" data-category="google" data-name="google maps">
+        <div class="card-glow"></div>
+        <img src="https://maps.gstatic.com/mapfiles/maps_lite/pwa/icons/maps15_bnuw3a_round_192x192.png" alt="Maps"/>
+        <div class="card-info">
+          <span class="card-name">Google Maps</span>
+          <span class="card-desc">Navegação e mapas</span>
+        </div>
+        <div class="card-arrow"><i class="fa fa-arrow-up-right-from-square"></i></div>
+      </a>
+
+      <a href="https://lookerstudio.google.com" target="_blank" class="card" data-category="google" data-name="google looker">
+        <div class="card-glow"></div>
+        <img src="https://www.gstatic.com/analytics-suite/header/software/intl/1x/looker_studio_64dp.png" alt="Looker"/>
+        <div class="card-info">
+          <span class="card-name">Google Looker</span>
+          <span class="card-desc">Gestão e análise de dados</span>
+        </div>
+        <div class="card-arrow"><i class="fa fa-arrow-up-right-from-square"></i></div>
+      </a>
+
+      <a href="https://www.youtube.com" target="_blank" class="card" data-category="outros" data-name="youtube">
+        <div class="card-glow"></div>
+        <img src="https://www.youtube.com/favicon.ico" alt="YouTube"/>
+        <div class="card-info">
+          <span class="card-name">YouTube</span>
+          <span class="card-desc">Vídeos</span>
+        </div>
+        <div class="card-arrow"><i class="fa fa-arrow-up-right-from-square"></i></div>
+      </a>
+
+      <!-- SOCIAL -->
+      <a href="https://www.instagram.com" target="_blank" class="card" data-category="social" data-name="instagram">
+        <div class="card-glow"></div>
+        <img src="https://static.cdninstagram.com/rsrc.php/v3/yI/r/VsNE-OHk_8a.png" alt="Instagram"/>
+        <div class="card-info">
+          <span class="card-name">Instagram</span>
+          <span class="card-desc">Rede social</span>
+        </div>
+        <div class="card-arrow"><i class="fa fa-arrow-up-right-from-square"></i></div>
+      </a>
+
+      <!-- DEV -->
+      <a href="https://github.com" target="_blank" class="card" data-category="dev" data-name="github">
+        <div class="card-glow"></div>
+        <img src="https://github.com/favicon.ico" alt="GitHub"/>
+        <div class="card-info">
+          <span class="card-name">GitHub</span>
+          <span class="card-desc">Hospedagem de código-fonte</span>
+        </div>
+        <div class="card-arrow"><i class="fa fa-arrow-up-right-from-square"></i></div>
+      </a>
+
+      <!-- IA -->
+      <a href="https://notebooklm.google.com" target="_blank" class="card" data-category="ia" data-name="notebook llm">
+        <div class="card-glow"></div>
+        <img src="https://notebooklm.google.com/favicon.ico" alt="NotebookLM"/>
+        <div class="card-info">
+          <span class="card-name">Notebook LLM</span>
+          <span class="card-desc">Anotações com IA</span>
+        </div>
+        <div class="card-arrow"><i class="fa fa-arrow-up-right-from-square"></i></div>
+      </a>
+
+      <!-- OUTROS -->
+      <a href="https://www.canva.com" target="_blank" class="card" data-category="outros" data-name="canva">
+        <div class="card-glow"></div>
+        <img src="https://static.canva.com/web/images/8439b51bb7a19f6e65ce1064bc37c14f.svg" alt="Canva"/>
+        <div class="card-info">
+          <span class="card-name">Canva</span>
+          <span class="card-desc">Designer</span>
+        </div>
+        <div class="card-arrow"><i class="fa fa-arrow-up-right-from-square"></i></div>
+      </a>
+
+      <a href="https://www.opal.so" target="_blank" class="card" data-category="outros" data-name="opal">
+        <div class="card-glow"></div>
+        <img src="https://www.opal.so/favicon.ico" alt="Opal"/>
+        <div class="card-info">
+          <span class="card-name">Opal</span>
+          <span class="card-desc">Full streak</span>
+        </div>
+        <div class="card-arrow"><i class="fa fa-arrow-up-right-from-square"></i></div>
+      </a>
+
+    </main>
+
+    <!-- Mensagem de nenhum resultado -->
+    <div class="no-results" id="noResults">
+      <i class="fa fa-magnifying-glass"></i>
+      <p>Nenhum app encontrado para "<span id="searchTerm"></span>"</p>
+    </div>
+
+    <footer>
+      <p>Desenvolvido por <strong>Clebson Marques</strong> ✦</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
