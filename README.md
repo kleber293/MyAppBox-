@@ -1,52 +1,54 @@
-# My App Box
+# MyAppBox — Seu portal de acesso rápido
 
-Um **catálogo de apps** com visual “cosmos” (canvas animado), **filtros por categoria**, **busca por nome** e um **rastro sutil do mouse**.
-Na barra **“busca por app”**, além de filtrar os cards, ao pressionar **Enter** o texto é enviado para uma **busca no Google** em uma nova aba.
+![Preview do MyAppBox](image%20(2).png)
 
-## Demo / Preview
-- Fundo animado com estrelas/nebulosas (Canvas)
-- Cards com glow/tilt + ripple
-- Busca instantânea + filtros
-- Mouse trail suave (com interpolação para não “quebrar” em movimentos rápidos)
-- Enter na busca abre o Google com o termo digitado
+O **MyAppBox** é um dashboard elegante e minimalista projetado para organizar seus aplicativos e serviços favoritos em um só lugar. Com um visual cósmico e interações fluidas, ele oferece uma experiência de navegação moderna e intuitiva.
 
-## Funcionalidades
+## ✨ Principais Funcionalidades
 
-### Busca por app
-- Digitar no campo filtra os cards em tempo real (por `data-name`)
-- `Enter` abre:
-- `https://www.google.com/search?q=<termo>`
+- **Busca Híbrida 🔍**: Digite para filtrar seus apps locais instantaneamente. Se não encontrar o que deseja, pressione **Enter** para realizar uma busca direta no Google em uma nova aba.
+- **Sistema de Filtros 🏷️**: Organize seus aplicativos por categorias (Google, Social, Dev, IA, Outros) e encontre o que precisa em um clique.
+- **Experiência Imersiva 🌌**:
+  - Fundo dinâmico com estrelas cadentes e nebulosas geradas em Canvas.
+  - Rastro do mouse ultra-suave com interpolação de movimento.
+  - Efeito de profundidade (Tilt 3D) e iluminação dinâmica nos cards.
+- **Responsivo**: Adaptado para diferentes resoluções de tela.
 
-### Filtros
-- Botões de filtro alternam a categoria ativa (por `data-category`)
-- Filtro + busca funcionam em conjunto
+## 🚀 Como usar
 
-### Efeitos visuais
-- Cosmos background em canvas
-- Shooting stars
-- Glow interno no hover dos cards
-- Efeito 3D tilt
-- Ripple no clique
-- Rastro do mouse suave com fade (pontos interpolados)
+1. **Clonar/Baixar**: Copie os arquivos do projeto para sua máquina.
+2. **Abrir**: Basta abrir o arquivo `index.html` em qualquer navegador moderno.
+3. **Atalhos**: 
+   - Pressione `/` para focar rapidamente no campo de busca.
+   - Pressione `Esc` para limpar a busca e resetar os filtros.
 
-## Estrutura do projeto
+## 🛠️ Tecnologias Utilizadas
 
-- `index.html` — estrutura da página e cards
-- `style.css` — estilos gerais, cards, botões, animações
-- `script.js` — cosmos canvas, trail do mouse, busca, filtros e efeitos
+- **HTML5**: Estrutura semântica dos cards e layout.
+- **CSS3**: Variáveis de cor, animações personalizadas, efeitos de Glassmorphism e layout Flex/Grid.
+- **JavaScript (Vanilla)**: Lógica do canvas, interpolação geométrica para o rastro do mouse, motores de filtro e busca.
 
-## Como rodar localmente
+## 📂 Estrutura do Repositório
 
-1. Baixe/clon​e o repositório
-2. Abra o `index.html` no navegador
+- `index.html`: Estrutura principal e lista de aplicativos.
+- `style.css`: Toda a identidade visual e efeitos de animação.
+- `script.js`: "Cérebro" do projeto (Canvas, Busca, Interface).
+- `image (2).png`: Screenshot para o README.
 
-## Personalização rápida
+## 🎨 Personalização
 
-No `script.js` (seção do rastro do mouse), você pode ajustar:
+Para adicionar novos aplicativos, basta inserir um novo bloco no `index.html` seguindo este padrão:
 
-- `TRAIL_MAX` — quantidade máxima de pontos no rastro
-- `MIN_DIST` — densidade dos pontos (menor = mais pontos)
-- `FADE_SPEED` — velocidade do desaparecimento (menor = dura mais)
+```html
+<div class="card" data-name="Nome do App" data-category="ia">
+    <img src="link-do-icone.png" alt="Logo">
+    <div class="card-info">
+        <h3>Nome do App</h3>
+        <p>Breve descrição</p>
+    </div>
+</div>
+```
 
-Também dá para trocar as cores em:
-- `trailColors`
+---
+
+Desenvolvido com foco em estética e performance por **Clebson Marques**. 🌌✨
